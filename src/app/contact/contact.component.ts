@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class ContactComponent {
 
+  constructor(private router: Router,
+    private route: ActivatedRoute) {
+  }
+  onReload() {
+    this.router.navigate(['../contact'], { relativeTo: this.route });
+  }
 }

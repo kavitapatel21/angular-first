@@ -1,9 +1,12 @@
 <button class="btn btn-primary">button</button>
 <span>
     <ul>
-        <li routerLinkActive="active"><a routerLink="/home" >Home</a></li>
-        <li routerLinkActive="active"><a routerLink="/about" >About Us</a></li>
-        <li routerLinkActive="active"><a routerLink="/contact" >Contact Us</a></li>       
+        <li routerLinkActive="active"><a routerLink="/home">Home</a></li>
+        <li routerLinkActive="active"><a routerLink="/about">About Us</a></li>
+        <li routerLinkActive="active"><a routerLink="/contact">Contact Us</a></li>
+        <li routerLinkActive="active"><a routerLink="/user">User</a></li>
+        <li routerLinkActive="active"><a routerLink="/users">Users</a></li>
+        <li routerLinkActive="active"><a routerLink="/users">Server</a></li>
     </ul>
 </span>
 
@@ -12,3 +15,51 @@
 <router-outlet></router-outlet>
 
 <h6>Conetent Ended!...</h6>
+
+<hr>
+<app-comp1></app-comp1>
+<app-comp2></app-comp2>
+
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="form_bg">
+            <form [formGroup]='signupForm' (ngSubmit)="PostData(signupForm)">
+                <div class="form-group">
+                    <input type="text" formControlName="fname" placeholder="Your firstname">
+                    <span *ngIf="signupForm.get('fname')?.errors?.['required']">Firstname is required!</span>
+                    <span *ngIf="signupForm.get('fname')?.errors?.['nameIsForbidden']">Enter valid firstname!</span>
+                    <!--<span *ngIf = "!signupForm.getRawValue().fname.valid && signupForm.getRawValue().fname.touched ">Please enter a valid first name!</span>-->
+                    <!--<span class="text-danger"
+                                *ngIf="(signupFormControl.fname.touched) ">
+                                Name is required
+                            </span>-->
+                </div>
+                <div class="form-group">
+                    <input type="text" formControlName="lname" placeholder="Your lastname">
+                    <span *ngIf="signupForm.get('lname')?.errors?.['required']">Lastname is required!</span>
+                    <span
+                        *ngIf="signupForm.get('lname')?.errors?.['maxlength']">Please enter valid Lastname</span>
+                </div>
+                <div class="form-group">
+                    <input type="text" formControlName="email" placeholder="Your email-id">
+                    <span *ngIf="signupForm.get('email')?.errors?.['required']">email is required!</span>
+                    <span *ngIf="signupForm.get('email')?.errors?.['email']">Please enter valid email</span>
+                </div>
+                <div class="form-group">
+                    <input type="text" formControlName="password" placeholder="Your password">
+                    <span *ngIf="signupForm.get('password')?.errors?.['required']">password is required!</span>
+                </div>
+                <div formArrayName="hobbies">
+                    <h4>Your Hobbies</h4>
+                    <button class="btn btn-default" type="button" (click)="onAddHobby()">Add Hobby</button>
+                    <div class="form-group" *ngFor="let hobbyControl of refForm.controls; let i=index">
+                        <input type="text" class="form-control" [formControlName]="i">
+                    </div>
+                </div>
+                <!--<input type="Submit" value="Post Data" [disabled]="!signupForm.valid">-->
+                <input type="Submit" value="Post Data"> 
+            </form>
+        </div>
+    </div>
+</div>
