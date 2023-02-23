@@ -13,6 +13,8 @@ import { UsersComponent } from './user/users/users.component';
 import { EditServerComponent } from './server/edit-server/edit-server.component';
 import { Comp1Component } from './comp1/comp1.component';
 import { Comp2Component } from './comp2/comp2.component';
+import { CompanyComponent } from './company/company.component';
+import { PersonComponent } from './person/person.component';
 //import { NumlistService } from './numlist.service';
 
 
@@ -35,7 +37,9 @@ const appRoutes: Routes = [
     UsersComponent,
     EditServerComponent,
     Comp1Component,
-    Comp2Component
+    Comp2Component,
+    CompanyComponent,
+    PersonComponent
   ],
   imports: [
     BrowserModule,

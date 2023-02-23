@@ -57,9 +57,22 @@
                         <input type="text" class="form-control" [formControlName]="i">
                     </div>
                 </div>
+                <div formArrayName="ContactNos">
+                    <div *ngFor="let contact of contactNo.controls; index as i">
+                        <input type="text" [formControlName]='i' placeholder="Contact No">
+                    </div>
+
+                </div>
                 <!--<input type="Submit" value="Post Data" [disabled]="!signupForm.valid">-->
                 <input type="Submit" value="Post Data"> 
             </form>
+
+            <button (click)="addContactNo()">
+                Add new contact no
+            </button>
+            <button (click)="setPreset()">
+               Set preset
+            </button>
         </div>
     </div>
 </div>
